@@ -1,0 +1,17 @@
+{
+    "name": "fadid/phprestmvc",
+    "description": "phpmvc Project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Fadidab",
+            "email": "fadidab1998@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
