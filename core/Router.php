@@ -4,11 +4,13 @@ namespace  app\core;
 class Router
 {
     public Request $request;
+    public Response $response;
   protected  array  $routes =[];
 
-    public function __construct( \app\core\Request $request)
+    public function __construct( Request $request, Response $response)
     {
         $this->request = $request;
+        $this->response = $response;
     }
 
 
@@ -16,6 +18,10 @@ class Router
   {
       $this->routes['get'][$path] = $callback;
   }
+    public  function post($path, $callback)
+    {
+        $this->routes['post'][$path] = $callback;
+    }
   public  function resolve()
   {
      $path =$this->request->getPath();
@@ -24,12 +30,12 @@ class Router
      $callback = $this->routes[$method][$path] ?? false;
      if($callback === false)
      {
-          echo "Not found";
-          exit;
+         $this->response->setStatusCode(404);
+         return $this->renderView("layouts.user.main._404");
      }
      if(is_string($callback))
      {
-         return $this->renderView($callback); 
+         return $this->renderView($callback);
      }
      return call_user_func($callback);
 
@@ -58,12 +64,10 @@ class Router
             }
 
         }
-            echo $rootView;
 
         $layoutContent = $this->layoutContent($rootLayout);
         $viewContent = $this->renderOnlyView($rootView);
         return str_replace('{{content}}', $viewContent, $layoutContent);
-        include_once Application::$ROOT_DIR."/view/$rootView.php";
     }
     protected function layoutContent($rootLayout)
     {
@@ -78,6 +82,12 @@ class Router
         return ob_get_clean();
     }
 
+    public function renderContent($viewContent)
+    {
+        $rootLayout= "layouts/user/main";
 
+        $layoutContent = $this->layoutContent($rootLayout);
+        return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
 
 }
