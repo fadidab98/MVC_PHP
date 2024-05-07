@@ -1,6 +1,8 @@
 <?php
 
 namespace  app\core;
+use Couchbase\View;
+
 class Router
 {
     public Request $request;
@@ -37,12 +39,16 @@ class Router
      {
          return $this->renderView($callback);
      }
+     if(is_array($callback))
+     {
+         $callback[0] = new $callback[0]();
+     }
      return call_user_func($callback);
 
 
   }
 
-    public function renderView($view)
+    public function renderView($view,$params=[])
     {
         $rootView="";
         $rootLayout = "";
@@ -64,9 +70,8 @@ class Router
             }
 
         }
-
         $layoutContent = $this->layoutContent($rootLayout);
-        $viewContent = $this->renderOnlyView($rootView);
+        $viewContent = $this->renderOnlyView($rootView,$params);
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
     protected function layoutContent($rootLayout)
@@ -75,8 +80,12 @@ class Router
         include_once Application::$ROOT_DIR."/view/$rootLayout.php";
         return ob_get_clean();
     }
-    protected function renderOnlyView($view)
+    protected function renderOnlyView($view,$params)
     {
+        foreach($params as $key=>$value)
+        {
+            $$key = $value;
+        }
         ob_start();
         include_once Application::$ROOT_DIR."/view/$view.php";
         return ob_get_clean();

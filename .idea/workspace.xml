@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9898584e-d67e-423f-bb04-b540ec496b2a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/Response.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/_404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Application.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/layouts/user/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/layouts/user/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/layouts/user/navbar/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/layouts/user/navbar/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1714991464348</updated>
       <workItem from="1714991466168" duration="22343000" />
-      <workItem from="1715092607896" duration="3393000" />
+      <workItem from="1715092607896" duration="11534000" />
     </task>
     <servers />
   </component>
